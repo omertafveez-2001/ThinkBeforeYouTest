@@ -5,7 +5,6 @@ import numpy as np
 from tqdm.autonotebook import tqdm
 from evaluate import load
 from gluonts.time_feature import get_seasonality
-import matplotlib.dates as mdates
 import pandas as pd
 import dataloader as dl
 import matplotlib.pyplot as plt
