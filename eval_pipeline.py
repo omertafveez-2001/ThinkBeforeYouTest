@@ -112,7 +112,7 @@ def forecast_pipeline(dataset_name="traffic"):
 
     return forecasts, prediction_length, test_dataset, train_dataset, freq
 
-def eval_():
+def eval_(dataset_name="traffic"):
     """
     Eval Pipeline for evaluating the forecasts on MASE metric
     
@@ -128,7 +128,7 @@ def eval_():
     forecast is constructed (eg lagging by seasonality steps).
     """
 
-    forecasts, prediction_length, test_dataset ,_ , freq= forecast_pipeline()
+    forecasts, prediction_length, test_dataset ,_ , freq= forecast_pipeline(dataset_name=dataset_name)
 
     print("Evaluaing on MASE metric...")
     mase_metric = load("evaluate-metric/mase")
