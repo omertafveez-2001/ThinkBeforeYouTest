@@ -34,6 +34,17 @@ from gluonts.dataset.loader import as_stacked_batches
 
 
 def create_transformation(freq: str, config: PretrainedConfig) -> Transformation:
+    """
+    Transformations:
+    1. Removes unused fields. Cleans the dataset of unnecessary metadata
+    2. Converts Fields to Numpy Arrays.
+    3. Add observed mask: Missing vs Observed values
+    4. Add Time-Based positional Features for eg hour of the day.
+    5. Add Age Feature: Represents how far along the time series is.
+    6. Stack temporal features.
+    7. Rename for Huggingface Compatibility.    
+    """
+
     # create a list of fields to remove later
     remove_field_names = []
     if config.num_static_real_features == 0:
