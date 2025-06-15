@@ -192,12 +192,9 @@ def analyze_series(i, forecast):
         return 0.0  # fallback in case of errors
 
 def trust_score(forecasts):
-    trust_score = Parallel(n_jobs=-1)(
-    delayed(analyze_series)(i, forecast) for i in range(forecasts.shape[0])
+    trust_scores = Parallel(n_jobs=-1)(
+        delayed(analyze_series)(i, forecasts[i]) for i in range(forecasts.shape[0])
     )
-    trust_score = np.array(trust_score)
-
-    return trust_score
-
+    return np.array(trust_scores)
 
 
